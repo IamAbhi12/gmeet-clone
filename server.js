@@ -37,6 +37,10 @@ app.get('/', (req, res) => {
         res.redirect('/auth/google')
 })
 
+app.get('/logout', (req, res) => {
+    res.send('<h3>Left the meeting</h3>');
+})
+
 //to join an existing room
 app.get('/:room', (req, res) => {
     ROOM_ID = req.params.room;
@@ -64,6 +68,7 @@ io.on('connection', (socket) => {
         })
     })
 })
+
 
 //google authentication
 

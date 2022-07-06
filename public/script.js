@@ -115,9 +115,8 @@ function playStop() {
     }
 }
 
-function leaveRoom() {
-    socket.emit('left', USER_ID, ROOM_ID);
-    window.location = "http://localhost:3000";
+function leaveMeet() {
+    window.location = '/logout';
 }
 
 function setMuteButton() {
@@ -151,5 +150,4 @@ function setPlayVideo() {
     `
     document.querySelector('.main__video_button').innerHTML = html;
 }
-
 
