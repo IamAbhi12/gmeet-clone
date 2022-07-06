@@ -40,13 +40,21 @@ socket.on('user_disconnected', userId => {
 
 const msg = document.querySelector('input')
 const chatMsg = document.getElementById('chat_message')
+
 chatMsg.addEventListener('keydown', e => {
-    if (e.code == 'Enter' && msg.value.length !== 0) {
+    if (e.keyCode == 13 && msg.value.length !== 0) {
         socket.emit('message', msg.value);
         msg.value = '';
     }
 })
+const sendMsg = document.querySelector('.main__send__message')
 
+sendMsg.addEventListener('click', () => {
+    if (msg.value.length !== 0) {
+        socket.emit('message', msg.value);
+        msg.value = '';
+    }
+})
 
 socket.on('new-message', message => {
     const messages = document.querySelector('ul')
@@ -107,6 +115,11 @@ function playStop() {
     }
 }
 
+function leaveRoom() {
+    socket.emit('left', USER_ID, ROOM_ID);
+    window.location = "http://localhost:3000";
+}
+
 function setMuteButton() {
     const html = `
       <i class="fa-solid fa-microphone"></i>
@@ -138,4 +151,5 @@ function setPlayVideo() {
     `
     document.querySelector('.main__video_button').innerHTML = html;
 }
+
 

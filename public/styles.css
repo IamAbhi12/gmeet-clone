@@ -105,3 +105,9 @@ video {
 li {
   list-style: none;
 }
+
+.main__send__message {
+  color: #1da1f2;
+  background: transparent;
+  border: 0px;
+}
