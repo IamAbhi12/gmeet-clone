@@ -41,6 +41,7 @@ socket.on('user_disconnected', userId => {
 const msg = document.querySelector('input')
 const chatMsg = document.getElementById('chat_message')
 
+
 chatMsg.addEventListener('keydown', e => {
     if (e.keyCode == 13 && msg.value.length !== 0) {
         socket.emit('message', msg.value);
@@ -58,7 +59,7 @@ sendMsg.addEventListener('click', () => {
 
 socket.on('new-message', message => {
     const messages = document.querySelector('ul')
-    messages.innerHTML += `<li class="message"><b>user</b><br>${message}</li><br>`
+    messages.innerHTML += `<li class="message"><b>${USER_ID}</b><br>${message}</li><br>`
     scrollToBottom()
 })
 
