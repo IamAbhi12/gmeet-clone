@@ -153,3 +153,15 @@ function setPlayVideo() {
     document.querySelector('.main__video_button').innerHTML = html;
 }
 
+const chatWindow = document.querySelector('.main__right')
+const videoWindow = document.querySelector('.main__left')
+function showHideChat() {
+    if (chatWindow.style.display === 'none') {
+        videoWindow.style.flex = 0.8;
+        chatWindow.style.flex = 0.2;
+        chatWindow.style.display = 'flex';
+    } else {
+        videoWindow.style.flex = 1.0;
+        chatWindow.style.display = 'none';
+    }
+}

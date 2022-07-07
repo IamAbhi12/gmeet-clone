@@ -11,6 +11,8 @@ video {
   width: 400px;
   height: 300px;
   object-fit: cover;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 .main {
@@ -21,13 +23,12 @@ video {
 .main__left {
   display: flex;
   flex-direction: column;
-  flex: 0.8;
+  flex: 1;
 }
 
 .main__right {
-  display: flex;
+  display: none;
   flex-direction: column;
-  flex: 0.2;
   background-color: #242324;
 }
 
@@ -56,7 +57,7 @@ video {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 8px 10px;
+  padding: 6px 8px;
   min-width: 80px;
   cursor: pointer;
 }
@@ -72,6 +73,17 @@ video {
 
 .leave-meeting {
   color: #eb534b;
+}
+
+.main__whiteboard {
+  color: #d2d2d2;
+}
+
+.main__whiteboard:hover {
+  background-color: #343434;
+  border-radius: 5px;
+  color: #d2d2d2;
+  text-decoration: none;
 }
 
 .main__header {
