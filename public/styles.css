@@ -27,7 +27,8 @@ video {
 }
 
 .main__right {
-  display: none;
+  display: flex;
+  flex: 0.2;
   flex-direction: column;
   background-color: #242324;
 }
