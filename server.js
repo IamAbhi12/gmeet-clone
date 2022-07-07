@@ -42,7 +42,7 @@ app.get('/whiteboard',(req,res)=>{
 let connections=[];
 io.on('connect',(Socket)=>{
     connections.push(Socket);
-    console.log(`${Socket.id} has connected`);
+    // console.log(`${Socket.id} has connected`);
 
    Socket.on('draw',(data)=>{
     connections.forEach((con)=>{

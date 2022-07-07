@@ -3,8 +3,8 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 
 passport.use(new GoogleStrategy({
-    clientID:'139659427493-4p1k1hse9s5g2cngqsfe8cj92tqr8cal.apps.googleusercontent.com',
-    clientSecret:'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',
+    clientID:GOOGLE_CLIENT_ID,
+    clientSecret:GOOGLE_CLIENT_SECRET,
     callbackURL: "/auth/google/callback",
     passReqToCallback: true
 },
