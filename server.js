@@ -36,7 +36,31 @@ app.get('/', (req, res) => {
     } else
         res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
 })
+app.get('/whiteboard',(req,res)=>{
+    res.render('room2');
+})
+let connections=[];
+io.on('connect',(Socket)=>{
+    connections.push(Socket);
+    // console.log(`${Socket.id} has connected`);
 
+   Socket.on('draw',(data)=>{
+    connections.forEach((con)=>{
+     if(con.id!==Socket.id)
+     con.emit("ondraw",{x:data.x,y:data.y});
+    });
+
+   })
+   Socket.on('down',(data)=>{
+    connections.forEach((con)=>{
+        if(con.id!==Socket.id){
+        con.emit('ondown',{x:data.x,y:data.y})};
+    });
+   });
+    Socket.on('disconnect',(reason)=>{
+        connections=connections.filter((con)=>con.id!==Socket.id);
+    });
+});
 //logging out and destroying the session
 app.get('/logout', (req, res) => {
     req.logout();
