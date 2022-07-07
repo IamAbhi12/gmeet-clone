@@ -1,10 +1,10 @@
 {
   "name": "webrtc_tut",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +16,17 @@
     "passport": "^0.5.3",
     "passport-google-oauth2": "^0.2.0",
     "peer": "^0.6.1",
+    "peerjs": "^1.4.6",
     "socket.io": "^4.5.1",
     "uuid": "^8.3.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Avichal1307/gmeet-clone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Avichal1307/gmeet-clone/issues"
+  },
+  "homepage": "https://github.com/Avichal1307/gmeet-clone#readme",
+  "description": ""
 }
