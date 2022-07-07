@@ -12,6 +12,7 @@
     />
     <script>
       const ROOM_ID = "<%= roomId %>";
+      const Username = "<%= username %>"
     </script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
@@ -99,10 +100,11 @@
         <div class="main__message__container">
           <input
             id="chat_message"
+            name="chat-message"
             type="text"
             placeholder="Type message here..."
           />
-          <button class="main__send__message">
+          <button class="main__send__message" type="submit">
             <i class="fa-solid fa-paper-plane"></i>
           </button>
         </div>

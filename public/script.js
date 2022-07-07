@@ -12,6 +12,8 @@ myVideo.muted = true
 
 const peers = {}
 
+
+
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
     video: true,
@@ -43,24 +45,45 @@ const chatMsg = document.getElementById('chat_message')
 
 chatMsg.addEventListener('keydown', e => {
     if (e.keyCode == 13 && msg.value.length !== 0) {
-        socket.emit('message', msg.value);
+        socket.emit('send', msg.value);
         msg.value = '';
     }
 })
 const sendMsg = document.querySelector('.main__send__message')
 
-sendMsg.addEventListener('click', () => {
-    if (msg.value.length !== 0) {
-        socket.emit('message', msg.value);
-        msg.value = '';
-    }
-})
+// sendMsg.addEventListener('click', () => {
+//     if (msg.value.length !== 0) {
+//         // socket.emit('message', msg.value);
+//         // msg.value = '';
+       
+// }})
 
-socket.on('new-message', message => {
+sendMsg.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const message=msg.value;
+    console.log(msg.value);
     const messages = document.querySelector('ul')
-    messages.innerHTML += `<li class="message"><b>user</b><br>${message}</li><br>`
+    // append(`you:${message}`,'right');
+    // console.log(name);
+    messages.innerHTML += `<li class="message"><b>you</b><br>${message}</li><br>`
+    scrollToBottom()
+    socket.emit('send',{message : message, username : Username});
+    messageInput.value='';
+
+}
+)
+
+socket.on('receive',data=>{
+    // append(`${data.name} :${data.message}`,'left');
+    const messages = document.querySelector('ul')
+    messages.innerHTML += `<li class="message"><b>Someone</b><br>${data.message}</li><br>` //TODO username 
     scrollToBottom()
 })
+// socket.on('new-message', message => {
+//     const messages = document.querySelector('ul')
+//     messages.innerHTML += `<li class="message"><b>you</b><br>${message}</li><br>`
+//     scrollToBottom()
+// })
 
 peer.on('open', id => {
     socket.emit('join_room', ROOM_ID, id)

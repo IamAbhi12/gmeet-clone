@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Meet Clone</title>
+</head>
+<body>
+    <h1>Welcome <%= username %> </h1>
+    <a href="/<%= ROOM_ID %> ">New Meeting</a>
+
+    <form id="join-link">
+        <!-- <label for="code"></label><br> -->
+        <input type="text" id="code" name="code" placeholder="Enter Meeting Code"><br><br>
+        <input type="submit" value="Join">
+        </form> 
+</body>
+<script>
+    var form = document.getElementById('join-link')
+    form.addEventListener('submit', () => {
+        // console.log()
+        window.location.href = '/' + document.getElementById('code').value;
+        event.preventDefault();
+    })
+    var username = "<%= username %>";
+</script>
+</html>

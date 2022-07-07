@@ -27,12 +27,15 @@ app.use(passport.session());
 
 //to store the room information
 let ROOM_ID;
-
+// let username = "user"
 //to start a new room
 app.get('/', (req, res) => {
     ROOM_ID = uuidV4();
     if (req.user) {
-        res.redirect(`/${ROOM_ID}`)
+        // res.redirect(`/${ROOM_ID}`)
+        // username = req.user.displayName;
+        res.render(`home`, {ROOM_ID : ROOM_ID, username :  req.user.displayName})
+
     } else
         res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
 })
@@ -82,7 +85,7 @@ app.get('/:room', (req, res) => {
         res.header('Pragma', 'no-cache');
 
         //sending the room.ejs view
-        res.render('room', { roomId: ROOM_ID })
+        res.render('room', { roomId: ROOM_ID, username : req.user.displayName })
     } else
         res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
 })
@@ -93,10 +96,16 @@ io.on('connection', (socket) => {
         socket.join(roomId)
         socket.to(roomId).emit('user_connected', userId)
 
-        socket.on('message', message => {
-            io.to(roomId).emit('new-message', message)
+        // socket.on('message', message => {
+        //     io.to(roomId).emit('new-message', message)
+        
+        // })
 
-        })
+        socket.on('send',(message,username)=>{
+            io.to(roomId).emit('receive', {message:message, sender : username})
+            // socket.emit('receive',{message:message, sender : username})
+          });
+          
         socket.on('disconnect', () => {
             socket.to(roomId).emit('user_disconnected', userId)
         })
@@ -123,7 +132,9 @@ app.get('/auth/google',
 
 app.get('/auth/google/callback',
     passport.authenticate('google', {
-        successRedirect: (ROOM_ID) ? `/${ROOM_ID}` : `/${uuidV4()}`,
+        // successRedirect: (ROOM_ID) ? `/${ROOM_ID}` : `/${uuidV4()}`,
+        successRedirect: (ROOM_ID) ? `/${ROOM_ID}` : '/',
+        // successRedirect: '/',
         failureRedirect: '/auth/google/failure'
     }));
 
