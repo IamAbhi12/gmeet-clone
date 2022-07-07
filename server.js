@@ -34,20 +34,29 @@ app.get('/', (req, res) => {
     if (req.user) {
         res.redirect(`/${ROOM_ID}`)
     } else
-        res.redirect('/auth/google')
+        res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
 })
 
+//logging out and destroying the session
 app.get('/logout', (req, res) => {
-    res.send('<h3>Left the meeting</h3>');
+    req.logout();
+    req.session = null;
+    res.send('<h3>Left the meeting</h3><br><a href="/">Start a new meeting</a>');
 })
 
 //to join an existing room
 app.get('/:room', (req, res) => {
     ROOM_ID = req.params.room;
-    if (req.user)
+    if (req.user) {
+        //to prevent using browser back button to join the meeting after logout
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+        res.header('Expires', '-1');
+        res.header('Pragma', 'no-cache');
+
+        //sending the room.ejs view
         res.render('room', { roomId: ROOM_ID })
-    else
-        res.redirect('/auth/google')
+    } else
+        res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
 })
 
 //socket code
@@ -79,7 +88,8 @@ app.get('/auth/google/failure', (req, res) => {
 app.get('/auth/google',
     passport.authenticate('google', {
         scope:
-            ['email', 'profile']
+            ['email', 'profile'],
+        prompt: 'select_account' //to allow them to select a different account once logged out
     }
     ));
 

@@ -116,7 +116,9 @@ function playStop() {
 }
 
 function leaveMeet() {
-    window.location = '/logout';
+    var backlen = history.length;
+    history.go(-backlen);
+    window.location.href = '/logout';
 }
 
 function setMuteButton() {
