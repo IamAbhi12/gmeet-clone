@@ -48,6 +48,18 @@ peer.on('open', id => {
 const msg = document.querySelector('input')
 const chatMsg = document.getElementById('chat_message')
 
+function addMyMessage() {
+    const message = msg.value;
+    const messages = document.querySelector('ul')
+    var data = {msg : "hi", from : "someone"};
+    data.msg = message
+    data.from = USER_NAME
+    messages.innerHTML += `<li class="message"><a style = "font-weight:500;">${USER_NAME}</a><br><p>${message}</p></li><br>`
+    scrollToBottom();
+    socket.emit('send', data);
+    msg.value = '';
+}
+
 chatMsg.addEventListener('keydown', e => {
     if (e.keyCode == 13 && msg.value.length !== 0) {
         addMyMessage()
@@ -64,21 +76,9 @@ sendMsg.addEventListener('click', (e) => {
 }
 )
 
-function addMyMessage() {
-    const message = msg.value;
-    const messages = document.querySelector('ul')
-    var data = {};
-    data.msg = message
-    data.from = USER_NAME
-    messages.innerHTML += `<li class="message"><b>${USER_NAME}</b><br>${message}</li><br>`
-    scrollToBottom()
-    socket.emit('send', data);
-    msg.value = '';
-}
-
 socket.on('receive', data => {
     const messages = document.querySelector('ul')
-    messages.innerHTML += `<li class="message"><b>${data.from}</b><br>${data.msg}</li><br>`
+    messages.innerHTML += `<li class="message"><p>${data.from}</p><br>${data.msg}</li><br>`
     scrollToBottom()
 })
 

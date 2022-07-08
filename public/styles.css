@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #202124;
 }
 
 #video-grid {
@@ -28,9 +29,12 @@ video {
 
 .main__right {
   display: flex;
+  margin: 0.9cm;
+  padding: 0.4cm;
+  border-radius: 0.3cm;
   flex: 0.2;
   flex-direction: column;
-  background-color: #242324;
+  background-color: white;
 }
 
 .main__videos {
@@ -39,13 +43,13 @@ video {
   flex-grow: 1;
   justify-content: center;
   align-items: center;
-  background: black;
+  background: #202124;
 }
 
 .main__controls {
   display: flex;
   justify-content: space-between;
-  background-color: #1c1e20;
+  background-color: #202124;
   color: #d2d2d2;
 }
 
@@ -89,37 +93,63 @@ video {
 
 .main__header {
   padding-top: 5px;
-  color: #f5f5f5;
+  color: black;
+  background-color: white;
   text-align: center;
 }
 
 .main__chat__window {
   flex-grow: 1;
-  color: #f5f5f5;
+  /* color: #f5f5f5; */
   overflow-y: scroll;
+  color: black;
+  background-color: white;
 }
 
 .main__message__container {
-  padding: 22px 12px;
+  padding: 0px 8px;
+  border-radius: 10cm;
   display: flex;
+  color: white;
+  background-color: #F1F3F4;
 }
+
 
 .main__message__container input {
   flex-grow: 1;
   background-color: transparent;
+  font-size: 14px;
+  margin: 10px 0px;
+  padding: 0px 16px;
   border: none;
-  color: #f5f5f5;
+  outline: none;
+
+  color: black;
 }
 
 .unmute,
 .stop {
   color: #cc3b33;
 }
-
+p{
+  margin-bottom: 0;
+}
 li {
   list-style: none;
+  color: #202124;
 }
+ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 5px;
+  width: 7.2cm;
+  max-width: 7.2cm;
+  overflow-x:hidden;
+  white-space: initial;
+  word-wrap: break-word;
 
+  
+}
 .main__send__message {
   color: #1da1f2;
   background: transparent;
@@ -138,4 +168,26 @@ li {
 .new__meeting {
   padding: 20px;
   font-size: 24px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 0.5cm;
+  /* background-color: pink; */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

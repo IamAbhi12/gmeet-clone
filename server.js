@@ -101,8 +101,9 @@ io.on('connection', (socket) => {
         socket.to(roomId).emit('user_connected', userId)
 
         socket.on('send', data => {
-            socket.to(roomId).emit('receive', data)
-            // socket.emit('receive',{message:message, sender : username})
+            // socket.to(roomId).emit('receive', data)
+            console.log('send called')
+            socket.broadcast.emit('receive',data)
         });
 
         socket.on('disconnect', () => {
