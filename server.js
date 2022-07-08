@@ -28,18 +28,43 @@ app.use(passport.session());
 //to store the room information
 let ROOM_ID;
 
-//to start a new room
+
 app.get('/', (req, res) => {
     ROOM_ID = uuidV4();
     if (req.user) {
-        res.redirect(`/${ROOM_ID}`)
+
+        res.render(`home`, { ROOM_ID: ROOM_ID, username: req.user.displayName })
+
     } else
         res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
+})
+
+//logging out and destroying the session
+app.get('/logout', (req, res) => {
+    req.logout();
+    req.session = null;
+    res.send('<h3>Left the meeting</h3><br><a href="/">Start a new meeting</a>');
 })
 
 app.get('/whiteboard', (req, res) => {
     res.render('whiteboard');
 })
+
+//to join an existing room
+app.get('/:room', (req, res) => {
+    ROOM_ID = req.params.room;
+    if (req.user) {
+        //to prevent using browser back button to join the meeting after logout
+        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+        res.header('Expires', '-1');
+        res.header('Pragma', 'no-cache');
+
+        //sending the room.ejs view
+        res.render('room', { roomId: ROOM_ID, username: req.user.displayName })
+    } else
+        res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
+})
+
 
 let connections = [];
 io.on('connect', (Socket) => {
@@ -65,27 +90,9 @@ io.on('connect', (Socket) => {
     });
 });
 
-//logging out and destroying the session
-app.get('/logout', (req, res) => {
-    req.logout();
-    req.session = null;
-    res.send('<h3>Left the meeting</h3><br><a href="/">Start a new meeting</a>');
-})
 
-//to join an existing room
-app.get('/:room', (req, res) => {
-    ROOM_ID = req.params.room;
-    if (req.user) {
-        //to prevent using browser back button to join the meeting after logout
-        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-        res.header('Expires', '-1');
-        res.header('Pragma', 'no-cache');
 
-        //sending the room.ejs view
-        res.render('room', { roomId: ROOM_ID })
-    } else
-        res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
-})
+
 
 //socket code
 io.on('connection', (socket) => {
@@ -93,10 +100,11 @@ io.on('connection', (socket) => {
         socket.join(roomId)
         socket.to(roomId).emit('user_connected', userId)
 
-        socket.on('message', message => {
-            io.to(roomId).emit('new-message', message)
+        socket.on('send', data => {
+            socket.to(roomId).emit('receive', data)
+            // socket.emit('receive',{message:message, sender : username})
+        });
 
-        })
         socket.on('disconnect', () => {
             socket.to(roomId).emit('user_disconnected', userId)
         })
@@ -123,7 +131,9 @@ app.get('/auth/google',
 
 app.get('/auth/google/callback',
     passport.authenticate('google', {
-        successRedirect: (ROOM_ID) ? `/${ROOM_ID}` : `/${uuidV4()}`,
+        // successRedirect: (ROOM_ID) ? `/${ROOM_ID}` : `/${uuidV4()}`,
+        successRedirect: (ROOM_ID) ? `/${ROOM_ID}` : '/',
+        // successRedirect: '/',
         failureRedirect: '/auth/google/failure'
     }));
 

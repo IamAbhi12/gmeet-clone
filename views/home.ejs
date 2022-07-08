@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="//use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Google Meet Clone</title>
+  </head>
+  <body>
+    <div class="main__welcome">
+      <h2>Welcome <%= username %></h2>
+    </div>
+
+    <div class="about__text">
+      <h2>Premium video meetings for everyone.</h2>
+    </div>
+    <div class="main__meeting">
+      <div onclick="newMeet('<%=ROOM_ID%>')" class="new__meeting__button">
+        <i class="fa-solid fa-video"></i>
+        <span>New Meeting</span>
+      </div>
+      <div class="link__meeting">
+        <form id="join-link">
+          <!-- <label for="code"></label><br> -->
+          <input
+            type="text"
+            id="code"
+            name="code"
+            placeholder="Enter Meeting Code"
+          /><br /><br />
+          <input type="submit" value="Join" />
+        </form>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://kit.fontawesome.com/e28dbf8b03.js"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    function newMeet(roomId) {
+      window.location.href = `/${roomId}`;
+    }
+    var form = document.getElementById("join-link");
+    form.addEventListener("submit", () => {
+      // console.log()
+      window.location.href = "/" + document.getElementById("code").value;
+      event.preventDefault();
+    });
+    var username = "<%= username %>";
+  </script>
+</html>

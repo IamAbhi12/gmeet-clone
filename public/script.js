@@ -1,4 +1,4 @@
-
+'use strict'
 const socket = io()
 const videoGrid = document.getElementById('video-grid')
 const peer = new Peer(undefined, {
@@ -11,6 +11,7 @@ const myVideo = document.createElement('video')
 myVideo.muted = true
 
 const peers = {}
+
 
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
@@ -38,34 +39,50 @@ socket.on('user_disconnected', userId => {
     if (peers[userId]) peers[userId].close()
 })
 
+peer.on('open', id => {
+    USER_ID = id;
+    socket.emit('join_room', ROOM_ID, USER_ID)
+
+})
+
 const msg = document.querySelector('input')
 const chatMsg = document.getElementById('chat_message')
 
 
 chatMsg.addEventListener('keydown', e => {
     if (e.keyCode == 13 && msg.value.length !== 0) {
-        socket.emit('message', msg.value);
+        const message = msg.value;
+        const messages = document.querySelector('ul')
+        messages.innerHTML += `<li class="message"><b>${USER_NAME}</b><br>${message}</li><br>`
+        scrollToBottom()
+        var data = {};
+        data.msg = message
+        data.from = USER_NAME
+        socket.emit('send', data);
         msg.value = '';
     }
 })
+
 const sendMsg = document.querySelector('.main__send__message')
 
-sendMsg.addEventListener('click', () => {
-    if (msg.value.length !== 0) {
-        socket.emit('message', msg.value);
-        msg.value = '';
-    }
-})
-
-socket.on('new-message', message => {
+sendMsg.addEventListener('click', (e) => {
+    e.preventDefault();
+    const message = msg.value;
     const messages = document.querySelector('ul')
-    messages.innerHTML += `<li class="message"><b>${USER_ID}</b><br>${message}</li><br>`
+    messages.innerHTML += `<li class="message"><b>you</b><br>${message}</li><br>`
     scrollToBottom()
-})
+    data.msg = message
+    data.from = USER_NAME
+    socket.emit('send', data);
+    msg.value = '';
 
-peer.on('open', id => {
-    socket.emit('join_room', ROOM_ID, id)
-    USER_ID = id;
+}
+)
+
+socket.on('receive', data => {
+    const messages = document.querySelector('ul')
+    messages.innerHTML += `<li class="message"><b>${data.from}</b><br>${data.msg}</li><br>`
+    scrollToBottom()
 })
 
 function connectToNewUser(userId, stream) {

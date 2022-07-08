@@ -125,3 +125,17 @@ li {
   background: transparent;
   border: 0px;
 }
+
+.main__welcome {
+  padding: 5%;
+}
+
+.main__meeting {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new__meeting {
+  padding: 20px;
+  font-size: 24px;
+}

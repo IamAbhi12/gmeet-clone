@@ -12,7 +12,12 @@
     />
     <script>
       const ROOM_ID = "<%= roomId %>";
+      const USER_NAME = "<%= username %>";
     </script>
+    <script
+      src="https://kit.fontawesome.com/e28dbf8b03.js"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -21,10 +26,6 @@
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/68a1e3a45b.js"
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/peerjs@1.4.5/dist/peerjs.min.js"></script>
@@ -59,9 +60,9 @@
           </div>
 
           <div class="main__controls__block">
-            <div class="main__controls__button">
-              <i class="fa-solid fa-shield-halved"></i>
-              <span>Security</span>
+            <div onclick="" class="main__controls__button">
+              <i class="fa-solid fa-display"></i>
+              <span>Share Screen</span>
             </div>
             <div class="main__controls__button">
               <i class="fa-solid fa-user-group"></i>
@@ -99,10 +100,11 @@
         <div class="main__message__container">
           <input
             id="chat_message"
+            name="chat-message"
             type="text"
             placeholder="Type message here..."
           />
-          <button class="main__send__message">
+          <button class="main__send__message" type="submit">
             <i class="fa-solid fa-paper-plane"></i>
           </button>
         </div>
