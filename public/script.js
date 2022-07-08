@@ -48,18 +48,9 @@ peer.on('open', id => {
 const msg = document.querySelector('input')
 const chatMsg = document.getElementById('chat_message')
 
-
 chatMsg.addEventListener('keydown', e => {
     if (e.keyCode == 13 && msg.value.length !== 0) {
-        const message = msg.value;
-        const messages = document.querySelector('ul')
-        messages.innerHTML += `<li class="message"><b>${USER_NAME}</b><br>${message}</li><br>`
-        scrollToBottom()
-        var data = {};
-        data.msg = message
-        data.from = USER_NAME
-        socket.emit('send', data);
-        msg.value = '';
+        addMyMessage()
     }
 })
 
@@ -67,17 +58,23 @@ const sendMsg = document.querySelector('.main__send__message')
 
 sendMsg.addEventListener('click', (e) => {
     e.preventDefault();
-    const message = msg.value;
-    const messages = document.querySelector('ul')
-    messages.innerHTML += `<li class="message"><b>you</b><br>${message}</li><br>`
-    scrollToBottom()
-    data.msg = message
-    data.from = USER_NAME
-    socket.emit('send', data);
-    msg.value = '';
-
+    if (msg.value.length !== 0) {
+        addMyMessage()
+    }
 }
 )
+
+function addMyMessage() {
+    const message = msg.value;
+    const messages = document.querySelector('ul')
+    var data = {};
+    data.msg = message
+    data.from = USER_NAME
+    messages.innerHTML += `<li class="message"><b>${USER_NAME}</b><br>${message}</li><br>`
+    scrollToBottom()
+    socket.emit('send', data);
+    msg.value = '';
+}
 
 socket.on('receive', data => {
     const messages = document.querySelector('ul')
