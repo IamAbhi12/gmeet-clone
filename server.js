@@ -100,12 +100,15 @@ io.on('connection', (socket) => {
         socket.join(roomId)
         socket.to(roomId).emit('user_connected', userId)
 
-        socket.on('send', data => {
-            // socket.to(roomId).emit('receive', data)
-            console.log('send called')
-            socket.broadcast.emit('receive',data)
-        });
-
+        // socket.on('send', data => {
+        //     // socket.to(roomId).emit('receive', data)
+        //     console.log('send called')
+        //     socket.broadcast.emit('receive',data)
+        // });
+        socket.on('send',(message,username)=>{
+            // io.to(roomId).emit('receive', {message:message, sender : username})
+            socket.broadcast.emit('receive',{message:message, sender : username})
+          });
         socket.on('disconnect', () => {
             socket.to(roomId).emit('user_disconnected', userId)
         })

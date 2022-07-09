@@ -1,10 +1,15 @@
 'use strict'
 const socket = io()
 const videoGrid = document.getElementById('video-grid')
+// const peer = new Peer(undefined, {
+//     path: '/peerjs',
+//     host: '/',
+//     port: '443'
+// })
 const peer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
-    port: '443'
+    port: '3001'
 })
 let USER_ID;
 const myVideo = document.createElement('video')
@@ -78,7 +83,7 @@ sendMsg.addEventListener('click', (e) => {
 
 socket.on('receive', data => {
     const messages = document.querySelector('ul')
-    messages.innerHTML += `<li class="message"><p>${data.from}</p><br>${data.msg}</li><br>`
+    messages.innerHTML += `<li class="message"><a style = "font-weight:500;">${data.from}</a><br>${data.msg}</li><br>`
     scrollToBottom()
 })
 
@@ -100,7 +105,29 @@ function addVideoStream(video, stream) {
     video.addEventListener('loadedmetadata', () => {
         video.play()
     })
+    const html = `
+    <div class="overlayText" style="color : white;  position:absolute;
+  top:30%;
+  left:50%;
+  z-index:1;">
+        <p id="topText" style="
+  color: white;
+  font-size: 20px;
+  align-self: center;
+">Content above your video</p>
+    </div>
+    `
     videoGrid.append(video)
+    // document.getElementsByClassName("main__videos").innerHTML += (html);
+//     document.innerHTML += (<div >
+//     <p>Content above your video</p>
+//     <form>
+//         <p>Content Below Your Video</p>
+//         <label for="input">Form Input Label</label>
+//         <input id="input" name="input" value="" />
+//         <button type="submit">Submit</button>
+//     </form>
+// </div>)
 }
 
 function scrollToBottom() {
@@ -138,34 +165,44 @@ function leaveMeet() {
 
 function setMuteButton() {
     const html = `
-      <i class="fa-solid fa-microphone"></i>
-      <span>Mute</span>
+    <span class="material-icons">mic</span>
+      
     `
     document.querySelector('.main__mute_button').innerHTML = html;
+    document.querySelector('.main__mute_button').style = "background-color : #3C4043;"
 }
 
 function setUnmuteButton() {
     const html = `
-      <i class="unmute fa-solid fa-microphone-slash"></i>
-      <span>Unmute</span>
+    <span class="material-icons" style = " color : white;">
+    mic_off
+    </span>
+      
     `
     document.querySelector('.main__mute_button').innerHTML = html;
+    document.querySelector('.main__mute_button').style = "background-color : #EA4335;"
 }
 
 function setStopVideo() {
     const html = `
-      <i class="fa-solid fa-video"></i>
-      <span>Stop Video</span>
+    <span class="material-symbols-outlined" >
+              videocam
+              </span>
+      
     `
     document.querySelector('.main__video_button').innerHTML = html;
+    document.querySelector('.main__video_button').style = "background-color : #3C4043;"
 }
 
 function setPlayVideo() {
     const html = `
-    <i class="stop fa-solid fa-video-slash"></i>
-      <span>Play Video</span>
+    <span class="material-symbols-outlined" style = " color : white;">
+    videocam_off
+    </span>
     `
     document.querySelector('.main__video_button').innerHTML = html;
+    document.querySelector('.main__video_button').style = "background-color : #EA4335;"
+
 }
 
 const chatWindow = document.querySelector('.main__right')
