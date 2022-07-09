@@ -154,6 +154,7 @@ function playStop() {
     } else {
         setStopVideo()
         myVideoStream.getVideoTracks()[0].enabled = true;
+        document.getElementsByTagName('video').style = "background-color : #3C4043"
     }
 }
 
