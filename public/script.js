@@ -1,16 +1,16 @@
 'use strict'
 const socket = io()
 const videoGrid = document.getElementById('video-grid')
-// const peer = new Peer(undefined, {
-//     path: '/peerjs',
-//     host: '/',
-//     port: '443'
-// })
 const peer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
-    port: '3001'
+    port: '443'
 })
+// const peer = new Peer(undefined, {
+//     path: '/peerjs',
+//     host: '/',
+//     port: '3000'
+// })
 let USER_ID;
 const myVideo = document.createElement('video')
 myVideo.muted = true
@@ -56,7 +56,7 @@ const chatMsg = document.getElementById('chat_message')
 function addMyMessage() {
     const message = msg.value;
     const messages = document.querySelector('ul')
-    var data = {msg : "hi", from : "someone"};
+    var data = {};
     data.msg = message
     data.from = USER_NAME
     messages.innerHTML += `<li class="message"><a style = "font-weight:500;">${USER_NAME}</a><br><p>${message}</p></li><br>`
@@ -119,15 +119,15 @@ function addVideoStream(video, stream) {
     `
     videoGrid.append(video)
     // document.getElementsByClassName("main__videos").innerHTML += (html);
-//     document.innerHTML += (<div >
-//     <p>Content above your video</p>
-//     <form>
-//         <p>Content Below Your Video</p>
-//         <label for="input">Form Input Label</label>
-//         <input id="input" name="input" value="" />
-//         <button type="submit">Submit</button>
-//     </form>
-// </div>)
+    //     document.innerHTML += (<div >
+    //     <p>Content above your video</p>
+    //     <form>
+    //         <p>Content Below Your Video</p>
+    //         <label for="input">Form Input Label</label>
+    //         <input id="input" name="input" value="" />
+    //         <button type="submit">Submit</button>
+    //     </form>
+    // </div>)
 }
 
 function scrollToBottom() {

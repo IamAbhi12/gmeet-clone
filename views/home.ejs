@@ -18,29 +18,48 @@
     <title>Google Meet Clone</title>
   </head>
   <body>
-    <div class="main__welcome">
-      <h2>Welcome <%= username %></h2>
-    </div>
-
-    <div class="about__text">
-      <h2>Premium video meetings for everyone.</h2>
-    </div>
-    <div class="main__meeting">
-      <div onclick="newMeet('<%=ROOM_ID%>')" class="new__meeting__button">
-        <i class="fa-solid fa-video"></i>
-        <span>New Meeting</span>
+    <div class="main__home">
+      <div class="main__home__header">
+        <div class="main__welcome">
+          <h1>Welcome <%= username %></h1>
+        </div>
+        <div class="main__home__image">
+          <img src="assets/home.jpg" alt="meet-image" />
+        </div>
       </div>
-      <div class="link__meeting">
-        <form id="join-link">
-          <!-- <label for="code"></label><br> -->
-          <input
-            type="text"
-            id="code"
-            name="code"
-            placeholder="Enter Meeting Code"
-          /><br /><br />
-          <input type="submit" value="Join" />
-        </form>
+
+      <div class="main__body">
+        <div class="main__about__text">
+          <h2>Premium video meetings for everyone.</h2>
+          <p>
+            Click <strong>New meeting</strong> to get a new link you can send to
+            people<br />
+            you want to meet with or Join an
+            <strong>existing meeting</strong> with a code
+          </p>
+        </div>
+
+        <div class="main__meeting">
+          <div onclick="newMeet('<%=ROOM_ID%>')" class="new__meeting__button">
+            <i class="fa-solid fa-video"></i>
+            <span>New Meeting</span>
+          </div>
+          <div class="link__meeting">
+            <form id="join-link">
+              <div class="input__icon">
+                <i style="position: absolute" class="fa-solid fa-keyboard"></i>
+                <input
+                  class="input__link"
+                  type="text"
+                  id="code"
+                  name="code"
+                  placeholder="Enter a code"
+                />
+                <input type="submit" value="Join" class="join__button" />
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </body>
