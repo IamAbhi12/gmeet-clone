@@ -1,19 +1,20 @@
 'use strict'
 const socket = io()
 const videoGrid = document.getElementById('video-grid')
-const peer = new Peer(undefined, {
-    path: '/peerjs',
-    host: '/',
-    port: '443'
-})
 // const peer = new Peer(undefined, {
 //     path: '/peerjs',
 //     host: '/',
-//     port: '3000'
+//     port: '443'
 // })
+const peer = new Peer(undefined, {
+    path: '/peerjs',
+    host: '/',
+    port: '3000'
+})
 let USER_ID;
 const myVideo = document.createElement('video')
 myVideo.muted = true
+
 
 const peers = {}
 
@@ -46,7 +47,7 @@ socket.on('user_disconnected', userId => {
 
 peer.on('open', id => {
     USER_ID = id;
-    socket.emit('join_room', ROOM_ID, USER_ID)
+    socket.emit('join_room', ROOM_ID, USER_ID, USER_NAME)
 
 })
 
@@ -90,6 +91,7 @@ socket.on('receive', data => {
 
 function connectToNewUser(userId, stream) {
     const call = peer.call(userId, stream)
+    // USER_LIST.push(userId)
     const video = document.createElement('video')
     call.on('stream', userVideoStream => {
         addVideoStream(video, userVideoStream)

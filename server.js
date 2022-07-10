@@ -14,6 +14,8 @@ const { nextTick } = require('process')
 const passport = require('passport')
 require('./passport-setup');
 
+let USER_LIST = [];
+
 //middleware
 app.use(cookieSession({
     name: 'session',
@@ -91,9 +93,12 @@ io.on('connect', (Socket) => {
 
 //socket code
 io.on('connection', (socket) => {
-    socket.on('join_room', (roomId, userId) => {
+    socket.on('join_room', (roomId, userId, username) => {
+        
         socket.join(roomId)
+        USER_LIST.push({roomId: roomId , userId : userId ,username : username})
         socket.to(roomId).emit('user_connected', userId)
+        console.log(USER_LIST)
 
         // socket.on('send', data => {
         //     // socket.to(roomId).emit('receive', data)
