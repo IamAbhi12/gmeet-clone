@@ -6,6 +6,8 @@
 #video-grid {
   display: flex;
   justify-content: center;
+  overflow :hidden;
+  flex-wrap: wrap;
 }
 
 video {
