@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -17,9 +22,9 @@
       const ROOM_ID = "<%= roomId %>";
       const USER_NAME = "<%= username %>";
       const Username = "<%= username %>";
-      var datetime = new Date();
-// console.log(datetime);
-      document.getElementById("time").textContent = datetime;  
+      //       var datetime = new Date();
+      // // console.log(datetime);
+      //       document.getElementById("time").textContent = datetime;
     </script>
     <script
       src="https://kit.fontawesome.com/e28dbf8b03.js"
@@ -45,99 +50,92 @@
     <div class="main">
       <div class="main__left">
         <div class="main__videos">
-
-          <div id="video-grid">
-            
-          </div>
+          <div id="video-grid"></div>
         </div>
         <!-- <span id="time"> </span>
         <div class="main__controls">
           <div class=""> -->
-            <!-- <div
+        <!-- <div
               onclick="muteUnmute()"
               class="main__controls__button main__mute_button"
             >
               <i class="fa-solid fa-microphone"></i>
               <span>Mute</span>
             </div> -->
-            <!-- <span id="time"> </span> -->
-            <!-- <div
+        <!-- <span id="time"> </span> -->
+        <!-- <div
               onclick="playStop()"
               class="main__controls__button main__video_button"
             >
               <i class="fa-solid fa-video"></i>
               <span>Stop Video </span>
             </div> -->
-          <!-- </div> -->
+        <!-- </div> -->
 
-          <!-- <divs class="main__controls__block"> -->
-            
-            
-          <div class="main__controls__block">
-            <div
-              onclick="muteUnmute()"
-              class="main__controls__button main__mute_button"
-            >
+        <!-- <divs class="main__controls__block"> -->
+
+        <div class="main__controls__block">
+          <div
+            onclick="muteUnmute()"
+            class="main__controls__button main__mute_button"
+          >
             <span class="material-icons">mic</span>
 
-              <!-- <i class="fa-solid fa-microphone"></i> -->
-              <!-- <span>Mute</span> -->
-            </div>
-            <div
-              onclick="playStop()"
-              class="main__controls__button main__video_button"
+            <!-- <i class="fa-solid fa-microphone"></i> -->
+            <!-- <span>Mute</span> -->
+          </div>
+          <div
+            onclick="playStop()"
+            class="main__controls__button main__video_button"
+          >
+            <span class="material-symbols-outlined"> videocam </span>
+            <!-- <i class="fa-solid fa-video"></i> -->
+            <!-- <span>Stop Video </span> -->
+          </div>
+          <div onclick="" class="main__controls__button">
+            <span class="material-symbols-outlined"> present_to_all </span>
+            <!-- <i class="fa-solid fa-display"></i> -->
+            <!-- <span>Share Screen</span> -->
+          </div>
+          <div class="main__controls__button">
+            <!-- <i class="fa-solid fa-user-group"></i> -->
+            <span class="material-symbols-outlined"> group </span>
+            <!-- <span>Participants </span> -->
+          </div>
+          <div onclick="showHideChat()" class="main__controls__button">
+            <!-- <i class="fa-solid fa-message"></i> -->
+            <span class="material-symbols-outlined"> chat </span>
+            <!-- <span>Chat</span> -->
+          </div>
+          <div class="main__controls__button">
+            <a
+              class="main__whiteboard"
+              href="/whiteboard"
+              target="_blank"
+              style="font-size: 0px"
             >
-            <span class="material-symbols-outlined">
-              videocam
-              </span>
-              <!-- <i class="fa-solid fa-video"></i> -->
-              <!-- <span>Stop Video </span> -->
-            </div>
-            <div onclick="" class="main__controls__button">
-              <span class="material-symbols-outlined">
-                present_to_all
-                </span>
-              <!-- <i class="fa-solid fa-display"></i> -->
-              <!-- <span>Share Screen</span> -->
-            </div>
-            <div class="main__controls__button">
-              <!-- <i class="fa-solid fa-user-group"></i> -->
-              <span class="material-symbols-outlined">
-                group
-                </span>
-              <!-- <span>Participants </span> -->
-            </div>
-            <div onclick="showHideChat()" class="main__controls__button">
-              <!-- <i class="fa-solid fa-message"></i> -->
-              <span class="material-symbols-outlined">
-                chat
-                </span>
-              <!-- <span>Chat</span> -->
-            </div>
-            <div class="main__controls__button">
-              <a
-                class="main__whiteboard"
-                href="/whiteboard"
-                target="_blank"
-                style="font-size: 0px;"
+              <span class="material-symbols-outlined"> border_color </span>
+              <!-- <i class="fa-solid fa-chalkboard"></i> -->
+              <!-- <span>Whiteboard</span> -->
+            </a>
+          </div>
+          <div class="main__controls__block">
+            <div
+              onclick="leaveMeet()"
+              class="main__controls__button"
+              style="background-color: #ea4335; padding: 12px 20px"
+            >
+              <span
+                class="material-icons"
+                style="font-size: 24px; color: white"
               >
-              <span class="material-symbols-outlined">
-                border_color
-                </span>
-                <!-- <i class="fa-solid fa-chalkboard"></i> -->
-                <!-- <span>Whiteboard</span> -->
-              </a>
-            </div>
-            <div class="main__controls__block">
-              <div onclick="leaveMeet()" class="main__controls__button" style="background-color: #EA4335; padding : 12px 20px;">
-                <span class="material-icons" style="font-size : 24px; color: white;">
-                  call_end
-                  </span>
-                <!-- <span class="leave-meeting">Leave Meeting </span> -->
-              </div>
+                call_end
+              </span>
+              <!-- <span class="leave-meeting">Leave Meeting </span> -->
             </div>
           </div>
-          
+        </div>
+
         <!-- </divs> -->
       </div>
       <div style="display: none" class="main__right">
@@ -145,7 +143,7 @@
           <h6>Chat</h6>
         </div>
         <div class="main__chat__window">
-          <ul class="messages" ></ul>
+          <ul class="messages"></ul>
         </div>
         <div class="main__message__container">
           <input

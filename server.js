@@ -32,9 +32,7 @@ let ROOM_ID;
 app.get('/', (req, res) => {
     ROOM_ID = uuidV4();
     if (req.user) {
-
         res.render(`home`, { ROOM_ID: ROOM_ID, username: req.user.displayName })
-
     } else
         res.send(`<h3>You are not logged in. Login to continue.</h3><br><a href="/auth/google">Login with google</a>`)
 })
@@ -91,9 +89,6 @@ io.on('connect', (Socket) => {
 });
 
 
-
-
-
 //socket code
 io.on('connection', (socket) => {
     socket.on('join_room', (roomId, userId) => {
@@ -105,10 +100,10 @@ io.on('connection', (socket) => {
         //     console.log('send called')
         //     socket.broadcast.emit('receive',data)
         // });
-        socket.on('send',(message,username)=>{
+        socket.on('send', data => {
             // io.to(roomId).emit('receive', {message:message, sender : username})
-            socket.broadcast.emit('receive',{message:message, sender : username})
-          });
+            socket.broadcast.emit('receive', data)
+        });
         socket.on('disconnect', () => {
             socket.to(roomId).emit('user_disconnected', userId)
         })
@@ -129,15 +124,13 @@ app.get('/auth/google',
     passport.authenticate('google', {
         scope:
             ['email', 'profile'],
-        prompt: 'select_account' //to allow them to select a different account once logged out
+        prompt: 'select_account' //to allow user to select a different account once logged out
     }
     ));
 
 app.get('/auth/google/callback',
     passport.authenticate('google', {
-        // successRedirect: (ROOM_ID) ? `/${ROOM_ID}` : `/${uuidV4()}`,
         successRedirect: (ROOM_ID) ? `/${ROOM_ID}` : '/',
-        // successRedirect: '/',
         failureRedirect: '/auth/google/failure'
     }));
 

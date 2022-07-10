@@ -1,4 +1,4 @@
-body {
+.main {
   margin: 0;
   background-color: #202124;
 }
@@ -60,12 +60,12 @@ video {
   display: flex;
   color: #d2d2d2;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   /* background-color: #202124; */
 }
 
 .main__controls__button {
-  background-color: #3C4043;
+  background-color: #3c4043;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,9 +121,8 @@ video {
   border-radius: 10cm;
   display: flex;
   color: white;
-  background-color: #F1F3F4;
+  background-color: #f1f3f4;
 }
-
 
 .main__message__container input {
   flex-grow: 1;
@@ -141,7 +140,7 @@ video {
 .stop {
   color: #cc3b33;
 }
-p{
+p {
   margin-bottom: 0;
 }
 li {
@@ -154,30 +153,14 @@ ul {
   padding-left: 5px;
   width: 7.2cm;
   max-width: 7.2cm;
-  overflow-x:hidden;
+  overflow-x: hidden;
   white-space: initial;
   word-wrap: break-word;
-
-  
 }
 .main__send__message {
   color: #1da1f2;
   background: transparent;
   border: 0px;
-}
-
-.main__welcome {
-  padding: 5%;
-}
-
-.main__meeting {
-  display: flex;
-  justify-content: space-between;
-}
-
-.new__meeting {
-  padding: 20px;
-  font-size: 24px;
 }
 
 /* width */
@@ -203,22 +186,21 @@ ul {
 }
 
 @font-face {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
   src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-    local('MaterialIcons-Regular'),
-    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(https://example.com/MaterialIcons-Regular.woff2) format("woff2"),
+    url(https://example.com/MaterialIcons-Regular.woff) format("woff"),
+    url(https://example.com/MaterialIcons-Regular.ttf) format("truetype");
 }
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
-  font-size: 20px;  /* Preferred icon size */
+  font-size: 20px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -236,15 +218,14 @@ ul {
   -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 }
-
 
 .material-symbols-outlined {
   /* font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal; */
-  font-size: 20px;  /* Preferred icon size */
+  font-size: 20px; /* Preferred icon size */
   /* display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -262,19 +243,21 @@ ul {
   -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 }
 
-.container { position:relative; }
+.container {
+  position: relative;
+}
 .container video {
-    position:relative;
-    z-index:0;
+  position: relative;
+  z-index: 0;
 }
 .overlay {
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .tooltip {
@@ -292,7 +275,7 @@ ul {
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
- 
+
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
@@ -301,4 +284,163 @@ ul {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+/* home view styles */
+
+.main__home {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  font-family: "Open Sans", sans-serif;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__home__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main__welcome {
+  max-width: 50%;
+  padding: 2%;
+  flex: 0.7;
+  margin-left: 6%;
+}
+
+.main__welcome h1 {
+  font-size: 4rem;
+  color: #030303;
+  filter: drop-shadow(0.5px 0.5px Gray);
+}
+.main__home__image {
+  margin-right: 6%;
+}
+
+.main__home__image img {
+  flex: 0.3;
+  width: 500px;
+  height: auto;
+  border-radius: 6px;
+  filter: drop-shadow(2px 4px 6px gray);
+}
+
+.main__body {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+  width: 100%;
+}
+
+.main__about__text {
+  margin-left: 8%;
+  margin-bottom: 20px;
+}
+
+.main__about__text h2 {
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+
+.main__about__text p {
+  min-width: 470px;
+}
+.main__meeting {
+  margin-top: 20px;
+  margin-left: 8%;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 600px;
+  min-width: 500px;
+}
+
+.main__meeting i {
+  padding: 0 6px 0 0;
+}
+
+.new__meeting__button {
+  font-size: 16px;
+  background-color: rgb(26, 115, 232);
+  color: white;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+}
+
+.new__meeting__button:hover {
+  font-size: 16px;
+  background-color: #134eac;
+  color: white;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-weight: 800;
+  filter: drop-shadow(2px 3px 4px lightgray);
+}
+
+.link__meeting {
+  font-size: 16px;
+}
+.input__icon {
+  margin-left: 15px;
+  width: 100%;
+}
+.input__icon i {
+  padding: 10px;
+  min-width: 20px;
+}
+
+.input__link {
+  width: 75%;
+  padding: 5px;
+  text-align: center;
+}
+
+.join__button {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: none;
+  color: lightgray;
+  font-weight: 600;
+}
+.join__button:hover {
+  padding: 5px 10px;
+  background-color: transparent;
+  border: none;
+  color: rgb(26, 115, 232);
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 800px) {
+  .main__welcome h1 {
+    font-size: 2.5rem;
+  }
+
+  .main__home__image img {
+    width: 340px;
+    border-radius: 3px;
+    filter: drop-shadow(1px 2px 3px gray);
+  }
+
+  .main__about__text {
+    margin-left: 8%;
+  }
+  .main__about__text h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main__welcome h1 {
+    font-size: 1.8rem;
+  }
+
+  .main__home__image img {
+    width: 250px;
+    border-radius: 3px;
+    filter: drop-shadow(1px 2px 3px gray);
+  }
 }
