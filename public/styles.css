@@ -298,13 +298,14 @@ ul {
 
 .main__home__header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .main__welcome {
   max-width: 50%;
-  padding: 24px;
+  padding: 2%;
   flex: 0.7;
+  margin-left: 6%;
 }
 
 .main__welcome h1 {
@@ -312,6 +313,10 @@ ul {
   color: #030303;
   filter: drop-shadow(0.5px 0.5px Gray);
 }
+.main__home__image {
+  margin-right: 6%;
+}
+
 .main__home__image img {
   flex: 0.3;
   width: 500px;
@@ -336,12 +341,17 @@ ul {
   font-weight: 400;
   font-size: 2.5rem;
 }
+
+.main__about__text p {
+  min-width: 470px;
+}
 .main__meeting {
   margin-top: 20px;
   margin-left: 8%;
   display: flex;
   justify-content: flex-start;
-  max-width: 450px;
+  max-width: 600px;
+  min-width: 500px;
 }
 
 .main__meeting i {
@@ -381,7 +391,7 @@ ul {
 }
 
 .input__link {
-  width: 80%;
+  width: 75%;
   padding: 5px;
   text-align: center;
 }
@@ -399,4 +409,35 @@ ul {
   border: none;
   color: rgb(26, 115, 232);
   font-weight: 600;
+}
+
+@media only screen and (max-width: 800px) {
+  .main__welcome h1 {
+    font-size: 2.5rem;
+  }
+
+  .main__home__image img {
+    width: 340px;
+    border-radius: 3px;
+    filter: drop-shadow(1px 2px 3px gray);
+  }
+
+  .main__about__text {
+    margin-left: 8%;
+  }
+  .main__about__text h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main__welcome h1 {
+    font-size: 1.8rem;
+  }
+
+  .main__home__image img {
+    width: 250px;
+    border-radius: 3px;
+    filter: drop-shadow(1px 2px 3px gray);
+  }
 }
