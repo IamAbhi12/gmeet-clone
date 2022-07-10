@@ -1,16 +1,16 @@
 'use strict'
 const socket = io()
 const videoGrid = document.getElementById('video-grid')
-const peer = new Peer(undefined, {
-    path: '/peerjs',
-    host: '/',
-    port: '443'
-})
 // const peer = new Peer(undefined, {
 //     path: '/peerjs',
 //     host: '/',
-//     port: '3001'
+//     port: '443'
 // })
+const peer = new Peer(undefined, {
+    path: '/peerjs',
+    host: '/',
+    port: '3000'
+})
 let USER_ID;
 const myVideo = document.createElement('video')
 myVideo.muted = true
@@ -66,6 +66,7 @@ function addMyMessage() {
 }
 
 chatMsg.addEventListener('keydown', e => {
+    // e.preventDefault();
     if (e.keyCode == 13 && msg.value.length !== 0) {
         addMyMessage()
     }

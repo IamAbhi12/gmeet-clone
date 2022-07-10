@@ -9,8 +9,11 @@ body {
 }
 
 video {
-  width: 400px;
+  /* width: 400px; */
+  width: 533px;
   height: 300px;
+  border-radius: 10px;
+  margin: 10px;
   object-fit: cover;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
