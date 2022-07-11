@@ -8,6 +8,12 @@
 Try Video Meeting [here](https://quiet-waters-11721.herokuapp.com/
 )
 
+## Project team
+- [@IamAbhi12](https://github.com/IamAbhi12)
+- [@YashGargIND](https://github.com/YashGargIND)
+- [@Avichal1307](https://github.com/Avichal1307)
+- [@yaswanthoo7](https://github.com/yaswanthoo7)
+- [@RC9192](https://github.com/RC9192)
 
 ## Features
 
@@ -18,10 +24,14 @@ Try Video Meeting [here](https://quiet-waters-11721.herokuapp.com/
 - Screen sharing
 
 
-
-
 ## Prerequisites
 Install [node.js](https://nodejs.org/en/) in your machine.
+
+
+## Socket.io
+Socket.io, a popular javascript library is used in this project to facilitate realtime communication. Socket.io allows real-time bi-directional communication between the browser and server.
+
+
 ## Run Locally
 
 Clone the project
