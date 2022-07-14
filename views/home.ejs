@@ -21,14 +21,16 @@
     <div class="main__home">
       <div class="main__home__header">
         <div class="main__welcome">
-          <h1>Welcome <%= username %></h1>
-        </div>
-        <div class="main__home__image">
-          <img src="assets/home.jpg" alt="meet-image" />
+          <h2>Welcome <%= username %></h2>
         </div>
       </div>
 
-      <div class="main__body">
+      <div class="main__body" style="display: flex; flex-direction: row-reverse;">
+        <div class="main__home__image">
+          <img src="assets/home.jpg" alt="meet-image" />
+        </div>
+        <div style="width: 100px;"></div>
+        <div style = "display: flex; flex-direction: column;">
         <div class="main__about__text">
           <h2>Premium video meetings for everyone.</h2>
           <p>
@@ -37,6 +39,7 @@
             you want to meet with or Join an
             <strong>existing meeting</strong> with a code
           </p>
+          
         </div>
 
         <div class="main__meeting">
@@ -60,6 +63,7 @@
             </form>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </body>

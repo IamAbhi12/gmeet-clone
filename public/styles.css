@@ -292,12 +292,12 @@ ul {
 
 .main__home {
   position: absolute;
-  height: 100vh;
+  /* height: 100vh; */
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   background-color: #fff;
   font-family: "Open Sans", sans-serif;
-  margin: 2% 10%;
+  margin: 6% 15%;
   display: flex;
   flex-direction: column;
 }
@@ -308,9 +308,9 @@ ul {
   align-items: center;
 }
 .main__welcome {
-  max-width: 50%;
+  /* max-width: 100%; */
   padding: 2%;
-  flex: 0.7;
+  /* flex: 0.7; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -374,6 +374,7 @@ ul {
   cursor: pointer;
   font-weight: 600;
   border-radius: 3px;
+  height: 40px;
 }
 
 .new__meeting__button:hover {
