@@ -20,7 +20,6 @@ Try Video Meeting here [https://quiet-waters-11721.herokuapp.com/](https://quiet
 - User authentication using Gmail-id.
 - Chatbox where users can chat with others in meet. 
 - Collaborative whiteboard in meet.
-- Screen sharing
 
 
 ## Prerequisites
