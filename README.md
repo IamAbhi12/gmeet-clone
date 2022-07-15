@@ -52,6 +52,7 @@ Start the server
 Video and Chat 
 
 <img src="https://user-images.githubusercontent.com/92078486/178569938-c1cd8040-27e7-4609-b25a-cc617dae25ba.png" alt="Video on" width="400"/> 
+<img src="https://user-images.githubusercontent.com/92078486/178569957-2f16f898-7d5c-4240-ab92-da8a50611c87.png" alt="Video off" width="400"/> 
 
 Whiteboard
 
