@@ -44,7 +44,7 @@ Go to the project directory and install dependencies
 ```bash
   npm install
 ```
-Inside the script.js file, change the port number ( e.g. 3000. It's 443 by default to run on heroku )
+Inside the script.js file, change the port number ( e.g. 3000 )
 
 Start the server
 
